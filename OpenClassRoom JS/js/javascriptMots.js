@@ -68,6 +68,9 @@ compterNbVoyelles(mot);
 inverser(mot);
 convertirEnLeetSpeak(mot);
 
+//********************************************
+
+
 var stylo1 = {
     type: "bille",
     couleur: "bleu",
@@ -82,6 +85,9 @@ function MonStylo(){
 var stylo2 = new MonStylo();
 
 console.log(stylo1.type+ stylo1.prix);
+
+//********************************************
+
 
 var arme = {
   nom : "dague",
@@ -112,6 +118,9 @@ console.log(perso.lancerArme());
 
 console.log(decrire(perso));
 
+//********************************************
+
+
 var chien = {
   nom : "Crockdur",
   taille : "75",
@@ -124,6 +133,9 @@ var chien = {
 
 console.log(chien.nom + " est un " + chien.race + " mesurant " + chien.taille + " cm");
 console.log("Tiens, un chat ! " + chien.nom + " aboie : " + chien.aboyer());
+
+//********************************************
+
 
 var r = Number(prompt("Entrez le rayon d'un cercle :"));
 
@@ -138,6 +150,8 @@ var cercle = {
 
 console.log("Son périmètre vaut " + cercle.perimetre());
 console.log("Son aire vaut " + cercle.aire());
+
+//********************************************
 
 var credit = Number(prompt("Saisir crédit : "));
 var debit = Number(prompt("Saisir débit : "));
@@ -161,3 +175,132 @@ compte.decrire();
 compte.crediter(credit);
 compte.debiter(debit);
 compte.decrire();
+
+//********************************************
+
+
+var mousquetaires = ["Athos","Porthos","Aramis"];
+
+for(i=0;i<mousquetaires.length;i++){
+  console.log(mousquetaires[i]);
+}
+
+mousquetaires.push("D'artagnan");
+
+mousquetaires.forEach(function(mousquetaire){
+  console.log(mousquetaire);
+});
+
+
+//********************************************
+
+var valeurs=[11,3,7,2,9,10];
+var somme = valeurs[0];
+var max = 0;
+for (i=0;i<valeurs.length;i++){
+  somme += valeurs[i];
+}
+
+console.log(somme);
+
+var valeurs = [3, 7, 177, 2, 9, 100];
+
+var max = valeurs[0];
+
+
+for (i=0;i<valeurs.length;i++){
+  if(valeurs[i]>max){
+    max = valeurs[i]
+  }
+}
+console.log("la valeur max est : "+ max);
+
+
+//********************************************
+
+
+var mots = [];
+var mot ="";
+
+while (mot !== "stop"){
+  var mot = prompt("Saissez un mot : ");
+  mots.push(mot);
+  if (mot == "stop"){
+    break;
+  }
+}
+
+for(i=0;i<(mots.length-1);i++){
+
+  console.log(mots[i]);
+}
+
+//********************************************
+
+var films = [];
+var film = {
+  initfilm : function (titre, annee,realisateur){
+    this.titre = titre;
+    this.annee = annee;
+    this.realisateur = realisateur;
+    films.push(this);
+  },
+  decrire : function(titre,annee,realisateur){
+    var message = this.titre+"("+this.annee+","+this.realisateur+")";
+    return message;
+  }
+}
+
+
+film1 = Object.create(film);
+film1.initfilm("Les lascars","2008","jean michel");
+
+
+film2 = Object.create(film);
+film2.initfilm("xxxx","2004","jean michel");
+
+
+
+
+for(i=0;i<films.length;i++){
+  console.log(films[i].decrire());
+}
+
+//********************************************
+var Chiens=[];
+var Chien = {
+    // initialise le chien
+    init: function (nom, race, taille) {
+        this.nom = nom;
+        this.race = race;
+        this.taille = taille;
+        Chiens.push(this);
+    },
+    // Renvoie l'aboiement du chien
+    aboyer: function () {
+        var aboiement = "Whoua ! Whoua !";
+        if (this.taille < 25) {
+            aboiement = "Kaii ! Kaii !";
+        } else if (this.taille > 60) {
+            aboiement = "Grrr ! Grrr !";
+        }
+        return aboiement;
+    },
+    decrire : function () {
+
+      var description = this.nom +" est  un " + this.race + " mesurant " + this.taille + " cm. " + this.aboyer();
+      return description;
+    }
+};
+
+
+chien1 = Object.create(Chien);
+chien1.init("moka","yorkshire",14);
+
+chien2 = Object.create(Chien);
+chien2.init("jojo","golden",52);
+
+console.log("Le chenil héberge : " +Chiens.length+" chien(s)");
+for(i=0;i<Chiens.length;i++){
+  console.log(Chiens[i].decrire());
+}
